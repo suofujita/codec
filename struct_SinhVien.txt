@@ -1,0 +1,79 @@
+#include <stdio.h>
+
+struct SinhVien {
+	float CPA;
+	int MSSV;
+	char Mon_1[50], Mon_2[50], Mon_3[50], Mon_4[50];
+    struct MON_1 {int so_lan_hoc; float diem[10];} mon_1;
+	struct MON_2 {int so_lan_hoc; float diem[10];} mon_2;
+    struct MON_3 {int so_lan_hoc; float diem[10];} mon_3;
+    struct MON_4 {int so_lan_hoc; float diem[10];} mon_4;
+	};
+
+int main(){
+	printf("START PROGRAM\n\n");
+    struct SinhVien sv;
+    int i;
+	printf("Ma So Sinh Vien: ");
+		scanf("%d", &sv.MSSV);
+	printf("Diem Trung Binh (Thang 4.0): ");
+		scanf("%f", &sv.CPA);
+	printf("4 mon hoc: \n");
+		scanf("%s",sv.Mon_1);
+		scanf("%s",sv.Mon_2);
+		scanf("%s",sv.Mon_3);
+		scanf("%s",sv.Mon_4);
+
+	// Mon 1
+	printf("Mon thu nhat: %s \nSo lan hoc: ",sv.Mon_1);
+		scanf("%d",&sv.mon_1.so_lan_hoc);
+			for (i=0; i < sv.mon_1.so_lan_hoc; i++){
+				printf("- Diem lan %d: ",i+1);
+					scanf("%f", &sv.mon_1.diem[i]);
+			}
+	printf("- Diem hoc moi lan: ");
+			for(i=0;i<sv.mon_1.so_lan_hoc;i++){
+				printf("%0.1f ", sv.mon_1.diem[i]);
+		    }
+	printf("\n------------------------------\n\n");
+
+	// Mon 2
+	printf("Mon thu hai: %s \nSo lan hoc: ",sv.Mon_2);
+		scanf("%d",&sv.mon_2.so_lan_hoc);
+			for (i=0; i < sv.mon_2.so_lan_hoc; i++){
+				printf("- Diem lan %d: ",i+1);
+					scanf("%f", &sv.mon_2.diem[i]);
+			}
+	printf("- Diem hoc moi lan: ");
+			for(i=0;i<sv.mon_2.so_lan_hoc;i++){
+				printf("%0.1f ", sv.mon_2.diem[i]);
+		    }
+    printf("\n------------------------------\n\n");
+
+    // Mon 3
+    printf("Mon thu ba: %s \nSo lan hoc: ",sv.Mon_3);
+		scanf("%d",&sv.mon_3.so_lan_hoc);
+			for (i=0; i < sv.mon_3.so_lan_hoc; i++){
+				printf("- Diem lan %d: ",i+1);
+					scanf("%f", &sv.mon_3.diem[i]);
+			}
+	printf("- Diem hoc moi lan: ");
+			for(i=0;i<sv.mon_3.so_lan_hoc;i++){
+				printf("%0.1f ", sv.mon_3.diem[i]);
+		    }
+    printf("\n------------------------------\n\n");
+
+	// Mon 4
+	printf("Mon thu tu: %s \nSo lan hoc: ",sv.Mon_4);
+		scanf("%d",&sv.mon_4.so_lan_hoc);
+			for (i=0; i < sv.mon_4.so_lan_hoc; i++){
+				printf("- Diem lan %d: ",i+1);
+					scanf("%f", &sv.mon_4.diem[i]);
+			}
+	printf("- Diem hoc moi lan: ");
+			for(i=0;i<sv.mon_4.so_lan_hoc;i++){
+				printf("%0.1f ", sv.mon_4.diem[i]);
+			}
+    printf("\n\nEND OF PROGRAM\n\n");
+	return 0;
+}
