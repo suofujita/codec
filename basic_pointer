@@ -1,0 +1,15 @@
+/* 1.Create a double variable named dblVar.
+   2.Create a pointer variable called dblPtr that points to dblVar.
+   3.Print the address stored in dblPtr to the screen.
+*/
+#include<stdio.h>
+
+int main() {
+  // Checkpoint 1 code goes here.
+  double dblVar;
+  // Checkpoint 2 code goes here.
+  double *dblPtr = &dblVar;
+  // Checkpoint 3 code goes here.
+  printf("%p",dblPtr);
+}
+
