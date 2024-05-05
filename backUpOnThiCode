@@ -1,0 +1,729 @@
+Contents
+Đề 1: In các số nguyên tố đến n. Với n nhập từ bàn phím	1
+Đề 2: In lịch của 1 năm bất kì	2
+Codecademy	2
+1. Mảng	2
+1.1 Địa chỉ mảng	2
+1.2	2
+3. In các số giảm dần từ n đến 1 với n nhập từ bàn phím (n>=1). In sao cho đến 10 số thì xuống dòng	3
+4.  Tổng các số chẵn từ 1 đến 100	3
+5. Viết chương trình tính S	3
+Sự khác nhau giữa float và double	3
+7. Nhập dữ liệu cho mảng 2 chiều	3
+8. Viết chương trình nhân 2 ma trận	4
+File header.h	4
+File main.c	4
+9. Viết chương trình vào ma trận kích thước n tính và in ra các phần tử nằm ở biên và đường chéo chính	5
+10. Sắp xếp các số tăng dần, giảm dần	5
+11. Viết chương trình đảo ngược xâu vừa nhập	5
+12. Viết chương trình nhập vào danh sách họ tên sinh viên 1 lớp, số sinh viên <=100, tên <=30. Cho đến khi nhập vào rỗng hoặc quá số lượng tối đa sau đó sắp xếp theo thứ tự alphabet của họ và tên và in ra danh sách.	5
+13. Kiểm tra xem ma trận có đối xứng hay không?	5
+14. Bài tập trên lớp KTLT  - Hàm	5
+Bài 1: Nhập mảng số nguyên khai báo ngoài hàm	5
+Bài 2: Nhập mảng số nguyên khai báo ngoài hàm, tham số ra n	6
+Bài 3: Nhập mảng khai báo ngoài, tham số ra mảng, tham số truyền n	6
+Truyền mảng 2 chiều vào hàm	7
+Bài 1: Hình vuông, tam giác trên, dưới, trái, phải	7
+Đề kiểm tra code:	8
+Bài 2: Viết chương trình tìm số pi	8
+Bài 3: Tìm sin(x)	8
+Bài 4: Bài tập về memory unit	8
+Bài 5: Bài tập xác định dung lượng tối đa của bộ nhớ	9
+Viết hàm hoán vị 2 phần tử	10
+Hàm trả về 2 giá trị	10
+Sử dụng con trỏ:	10
+Viết chương trình nhập và in mảng bằng 2 cách (sử dụng mảng như 1 con trỏ)	10
+
+
+Đề thi KTLT: đề bên cntt
+Đề 1: In các số nguyên tố đến n. Với n nhập từ bàn phím
+#include <stdio.h>
+#include <math.h>
+// ham nay cho cac so tu 2 tro len
+long songuyento(long n) {
+	int i;
+		for (i = 2;i <= sqrt(n);i++) {
+			if (n % i == 0) {
+				return 0;
+			}
+		}
+		return n;
+}
+
+int main(){
+	long i,n,count = 0;
+	scanf("%ld",&n);
+	printf("Cac so nguyen to nho hon hoac bang %ld\n",n);
+	// loai tru cac so <= 1
+if (n<2) printf("Khong co");
+	else{
+	for (i=2;i<=n;i++){
+		// goi ham
+		if (songuyento(i)>0)
+		{
+			printf("%ld ",i);
+			count++;
+	}
+	}
+	}
+	// dem so nguyen to
+	if (count>0) printf("\nCo %ld so",count);
+	return 0;
+}
+
+Đề 2: In lịch của 1 năm bất kì
+	Sử dụng công thức Zeller
+Codecademy
+
+
+
+#include<stdio.h>
+#include<string.h>
+
+int main() {	
+  int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  char s[] = "Farmer Jack realized that big yellow quilts were expensive!!";
+
+  // con tro den phan tu cuoi cung cua mang
+  int *ptr=&arr[9];
+  // in nguoc phan tu mang
+  for(int i=9;i>=0;i--){
+    printf("%d ",*ptr);
+    ptr--;  // lan dau dung
+  }
+  // con tro tro den vi tri dau chuoi
+  char *ptr2=&s[0];
+  // Thay the cac phan tu trong chuoi bang ki tu #
+  for(int i=0;i<strlen(s);i++){
+    *ptr2 = '#';
+    ptr2++;
+  }
+  printf("%s\n", s);  
+}
+
+1. Mảng
+mảng chi tiết
+1.1 Địa chỉ mảng
+
+1.2 
+
+các bài giảng ktlt bên cntt
+đề thi ktlt cntt
+1. Đếm số từ có trong chuỗi
+ktlt kntn hcm
+gk vũ song tùng
+ck vũ song tùng
+2. Tìm kích thước của struct và các phần tử trong struct
+3. In các số giảm dần từ n đến 1 với n nhập từ bàn phím (n>=1). In sao cho đến 10 số thì xuống dòng
+#include <stdio.h>
+int main() {
+	int n, count;
+	do {
+		printf("Nhap n (n>=1): ");
+		scanf("%d", &n);
+	} while (n < 1);
+	int i = n;
+	while (i > 0) {
+		printf("%3d ", i); 
+		count++;
+		if (count % 10 == 0) printf("\n");
+		i--;
+	}
+	return 0;
+}
+4.  Tổng các số chẵn từ 1 đến 100
+#include <stdio.h>
+int main() {
+	int i, s = 0;
+	for (i = 1;i <= 100;i++) {
+		if (i % 2 == 0) s += i;
+	}
+	printf("Tong cac so chan tu 1 den 100: %d", s);
+	return 0;
+}
+
+5. Viết chương trình tính S
+S=1+(1/(1+2^3 ))^2+(1/(2+3^4 ))^2+⋯+(1/((n-1)+n^(n+1) ))^2
+Sự khác nhau giữa float và double
+Huge difference.
+As the name implies, a double has 2x the precision of float[1]. In general a double has 15 decimal digits of precision, while float has 7.
+Here's how the number of digits are calculated:
+double has 52 mantissa bits + 1 hidden bit: log(253)÷log(10) = 15.95 digits
+float has 23 mantissa bits + 1 hidden bit: log(224)÷log(10) = 7.22 digits
+This precision loss could lead to greater truncation errors being accumulated when repeated calculations are done, e.g.
+float a = 1.f / 81;
+float b = 0;
+for (int i = 0; i < 729; ++ i)
+    b += a;
+printf("%.7g\n", b); // prints 9.000023
+while
+double a = 1.0 / 81;
+double b = 0;
+for (int i = 0; i < 729; ++ i)
+    b += a;
+printf("%.15g\n", b); // prints 8.99999999999996
+Also, the maximum value of float is about 3e38, but double is about 1.7e308, so using float can hit "infinity" (i.e. a special floating-point number) much more easily than double for something simple, e.g. computing the factorial of 60.
+During testing, maybe a few test cases contain these huge numbers, which may cause your programs to fail if you use floats.
+________________________________________
+Of course, sometimes, even double isn't accurate enough, hence we sometimes have long double[1] (the above example gives 9.000000000000000066 on Mac), but all floating point types suffer from round-off errors, so if precision is very important (e.g. money processing) you should use int or a fraction class.
+________________________________________
+Furthermore, don't use += to sum lots of floating point numbers, as the errors accumulate quickly. If you're using Python, use fsum. Otherwise, try to implement the Kahan summation algorithm.
+________________________________________
+[1]: The C and C++ standards do not specify the representation of float, double and long double. It is possible that all three are implemented as IEEE double-precision. Nevertheless, for most architectures (gcc, MSVC; x86, x64, ARM) float is indeed a IEEE single-precision floating point number (binary32), and double is a IEEE double-precision floating point number (binary64).
+7. Nhập dữ liệu cho mảng 2 chiều
+#include <stdio.h>
+int main() {
+    int a[100][100], h, c, i, j;
+    do {
+        printf("Nhap so hang tu 1..100: ");
+        scanf("%d", &h);
+    } while ((h < 1) || (h > 100));
+    do {
+        printf("Nhap so cot tu 1..100: ");
+        scanf("%d", &c);
+    } while ((c < 1) || (c > 100));
+
+    for (i = 0;i < h;i++) {
+        for (j = 0; j < c; j++) {
+            printf("a[%d][%d] = ", i, j);
+            scanf("%d", &a[i][j]);
+        }
+    }
+
+    for (i = 0;i < h;i++) {
+        for (j = 0;j < c;j++) {
+            printf("%5d", a[i][j]);
+        }
+        printf("\n");
+    }
+
+        return 0;
+}
+8. Viết chương trình nhân 2 ma trận 
+File header.h
+#pragma once
+#include <stdio.h>
+
+void inMaTran(int arr[100][100], int h,int c) {
+    int i,j;
+    for (i = 0;i < h ;i++) {
+        for (j = 0;j < c;j++) {
+            printf("%5d", arr[i][j]);
+        }
+        // khong duoc quen xuong dong
+        printf("\n");
+    }
+}
+
+int nhapHangHopLe() {
+    int m;
+    do {
+        printf("Nhap so hang tu 1..100: ");
+        scanf_s("%d", &m);
+    } while ((m < 1) || (m > 100));
+    return m;
+}
+
+int nhapCotHopLe() {
+    int n;
+    do {
+        printf("Nhap so cot tu 1..100: ");
+        scanf_s("%d", &n);
+    } while ((n < 1) || (n > 100));
+    return n;
+}
+
+File main.c
+#include <stdio.h>
+#include "myFunctions.h"
+int main() {
+    int a[100][100], b[100][100], multiple[100][100], m, n, q, p;
+    int i, j, k;
+
+    printf("Nhap so hang, cot ma tran A: \n");
+    m = nhapHangHopLe();
+    n = nhapCotHopLe();
+    printf("Nhap so hang, cot ma tran B: \n");
+    q = nhapHangHopLe();
+    p = nhapCotHopLe();
+
+    if (n != q) {
+        printf("Phep nhan khong thuc hien duoc");
+        return 0;
+    }
+
+    printf("Nhap du lieu ma tran A: \n");
+    for (i = 0;i < m;i++) {
+        for (j = 0; j < n; j++) {
+            printf("a[%d][%d] = ", i, j);
+            scanf_s("%d", &a[i][j]);
+        }
+    }
+    printf("Nhap du lieu ma tran B: \n");
+    for (i = 0;i < q;i++) {
+        for (j = 0; j < p; j++) {
+            printf("b[%d][%d] = ", i, j);
+            scanf_s("%d", &b[i][j]);
+        }
+    }
+
+    printf("Ma tran A: \n");
+    inMaTran(a, m, n);
+
+    printf("Ma tran B: \n");
+    inMaTran(b, q, p);
+
+    for (i = 0;i < m;i++) {
+        for (j = 0;j < p;j++) {
+            multiple[i][j] = 0;
+            for (k = 0;k < n;k++) {
+                multiple[i][j] += a[i][k] * b[k][j];
+            }
+        }
+    }
+    printf("Ma tran C=AB: \n");
+    for (i = 0;i < m;i++) {
+        for (j = 0;j < p;j++) {
+            printf("%5d", multiple[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+9. Viết chương trình vào ma trận kích thước n tính và in ra các phần tử nằm ở biên và đường chéo chính
+10. Sắp xếp các số tăng dần, giảm dần
+- File Header.h
+void swag(int* a, int* b) {
+	int temp;
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+	File main.c
+#include <stdio.h>
+#include "Header.h"
+
+int main() {
+	int a[100]; 
+	int i,j,n;
+	printf("Nhap so phan tu day: ");
+	scanf_s("%d", &n);
+	printf("Nhap day:\n");
+	for (i = 0;i < n;i++) {
+		printf("a[%d] = ", i);
+		scanf_s("%d", &a[i]);
+	}
+	printf("Day ban dau: ");
+	for (i = 0;i < n;i++) {
+		printf("%d ", a[i]);
+	}
+	
+	for (i = 0;i < (n-1);i++) {
+		for (j = 0;j < (n-1);j++) {
+			if (a[j] < a[j + 1])
+				swag(&a[j],&a[j+1]);
+		}
+	}
+	printf("\nDay giam: ");
+	for (i = 0;i < n;i++) {
+		printf("%d ", a[i]);
+	}
+
+	for (i = 0;i < (n - 1);i++) {
+		for (j = 0;j < (n - 1);j++) {
+			if (a[j] > a[j+1])
+				swag(&a[j], &a[j + 1]);
+		}
+	}
+	printf("\nDay tang: ");
+	for (i = 0;i < n;i++) {
+		printf("%d ", a[i]);
+	}
+	
+	return 0;
+}
+11. Viết chương trình đảo ngược xâu vừa nhập
+12. Viết chương trình nhập vào danh sách họ tên sinh viên 1 lớp, số sinh viên <=100, tên <=30. Cho đến khi nhập vào rỗng hoặc quá số lượng tối đa sau đó sắp xếp theo thứ tự alphabet của họ và tên và in ra danh sách.
+(2) Sửa chương trình: bar menu 1. Bổ sung 2. Sắp xếp 3. Chỉnh sửa
+13. Kiểm tra xem ma trận có đối xứng hay không?
+
+14. Bài tập trên lớp KTLT  - Hàm
+Bài 1: Nhập mảng số nguyên khai báo ngoài hàm
+#include <stdio.h>
+void nhapmang(int a[], int n) {
+	printf("Nhap mang: ");
+	for (int i = 0; i<n; i++)
+		scanf("%d", &a[i]);
+}
+int main(){
+	int a[100]; int i,n;
+	printf("So phan tu mang: ");
+	scanf("%d", &n);
+	
+	// kiem tra tinh hop le kich thuoc mang
+	if ((n<=0)||(n>100)) {
+		return 1;
+	}
+	nhapmang(a, n);
+	printf("Mang vua nhap:");
+	for(i=0;i<n;i++) {
+		printf("%d ", a[i]);
+	}
+	return 0;	
+}
+Bài 2: Nhập mảng số nguyên khai báo ngoài hàm, tham số ra n
+#include <stdio.h>
+int nhapmang(int a[]) {
+	int n;
+	printf("So phan tu mang: ");
+	scanf("%d",&n);
+	// kiem tra kich thuoc mang hop le
+	if ((n<=0)||(n>100)) {
+		return -1;
+	}
+	printf("Nhap mang: ");
+	for (int i = 0; i<n; i++)
+		scanf("%d", &a[i]);
+	return n;
+}
+int main(){
+	int a[100]; int i,n;
+	n = nhapmang(a);
+	if (n>0)
+	printf("%d",n);
+	else printf("ERROR!");
+	return 0;
+}
+Bài 3: Nhập mảng khai báo ngoài, tham số ra mảng, tham số truyền n
+
+// a khai báo trong hàm
+// tham so ra: a (return), n (truyen tham chieu)
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int* nhapmang(int *n){
+	printf("Nhap n: ");
+	scanf("%d",n);
+	if ((*n<=0)||(*n>100))
+		return NULL;
+	int *p;
+	p = (int*)malloc(*n*sizeof(int));
+	if (p==NULL) {
+		return NULL;
+	}
+	printf("Nhap mang: ");
+	int i;
+	for(i=0;i<*n;i++){
+		scanf("%d",p+i);
+	}
+	return p;
+}
+int main(){
+	int i,n=0;
+	int *a=NULL;
+	a = nhapmang(&n);
+	
+	if (a != NULL) {
+
+	printf("So phan tu mang: %d\n",n);
+	printf("Mang vua nhap: ");
+	for(i=0;i<n;i++){
+		printf("%d ",*(a+i));
+	}
+	free(a);
+	}
+	else printf("error");
+	return 0;
+}
+
+Truyền mảng 2 chiều vào hàm
+// chương trình in mảng đã nhập
+void inMaTran(int arr[100][100], int h,int c) {
+    int i,j;
+    for (i = 0;i < h ;i++) {
+        for (j = 0;j < c;j++) {
+            printf("%5d", arr[i][j]);
+        }
+        // khong duoc quen xuong dong
+        printf("\n");
+    }
+}
+Bài 1: Hình vuông, tam giác trên, dưới, trái, phải
+/*Viet chuong trinh nhap vao 1 so nguyen n va 1 ki tu ch roi in ra hinh vuong voi n hang,
+moi hang co n ki tu ch */
+#include <stdio.h>
+int main() {
+	int i, j, k, n;
+	char ch;
+	do {
+		printf("Nhap so nguyen n (n>0): ");
+		scanf("%d", &n);
+	} while (n <= 0);
+	// nhap 1 ki tu trong c
+	getchar();
+	printf("Nhap 1 ki tu bat ki: ");
+	scanf("%c", &ch);
+
+	// hinh vuong nxn ki tu
+	for (i = 0;i < n;i++) {
+		for (j = 0;j < n;j++)
+			printf("%c", ch);
+		printf("\n");
+	}
+	printf("\n");
+	//tam giac duoi trai
+	for (i = 0;i < n;i++) {
+		for (j = 0;j <= i;j++)
+			printf("%c", ch);
+		printf("\n");
+	}
+	printf("\n");
+	//tam giac tren trai
+	for (i = 0;i < n;i++) {
+		for (j = n;j > i;j--)
+			printf("%c", ch);
+		printf("\n");
+	}
+	printf("\n");
+	// tam giac tren phai
+	for (i = 0;i < n;i++) {
+		for (j = n;j > n - i;j--)
+			printf(" ");
+		for (k = n;k > i;k--)
+			printf("%c", ch);
+		printf("\n");
+	}
+	printf("\n");
+	// tam giac duoi phai
+	for (i = 0;i < n;i++) {
+		for (j = n;j > i + 1;j--)
+			printf(" ");
+		for (k = 0;k <= i;k++)
+			printf("%c", ch);
+		printf("\n");
+	}
+	return 0;
+
+}
+
+Đề kiểm tra code:
+1. Vẽ tam giác pascal, test thử với n=10
+2. Nhập vào 1 mảng kí tự
+3. Code vẽ các tam giác được tạo bởi các cạnh của hình vuông
+4. Viết chương trình tìm max trong 3 số a,b,c
+Bài 2: Viết chương trình tìm số pi
+#include <stdio.h>
+int main() {
+	double PI, p = 1, esp,i=3;
+	int dau = -1;
+	scanf_s("%lf", &esp);
+	while (1 / i > esp) {
+		p += dau / i;
+		dau = -dau;
+		i = i + 2;
+	}
+	printf("PI = %lf", 4 * p);
+	return 0;
+}
+
+Bài 3: Tìm sin(x)
+#include <stdio.h>
+#include <math.h>
+int main() {
+	char ch;
+	do {
+		double x, h, kq, dau = 1, esp, n;
+		scanf_s("%lf %lf", &x, &esp);
+		h = x;
+		n = 3;
+		kq = 0;
+		while (fabs(h) > esp) {
+			kq += h;
+			dau = -dau;
+			h = (dau * h * x * x) / (n * (n - 1));
+			n += 2;
+		}
+		printf("sin(%lf) = %lf", x, kq);
+		scanf_s(" %c", &ch);
+	} while (ch == 'y');
+	return 0;
+}
+Bài 4: Bài tập về memory unit
+Question 1:
+Which of the following is the smallest unit of digital storage?
+a. Kilobyte (KB)
+b. Megabyte (MB)
+c. Gigabyte (GB)
+d. Terabyte (TB)
+Question 2:
+How many bytes are there in a kilobyte (KB)?
+a. 1000 bytes
+b. 1024 bytes
+c. 500 bytes
+d. 2048 bytes
+Question 3:
+Which of the following is larger: a megabyte (MB) or a gigabyte (GB)?
+a. Megabyte (MB)
+b. Gigabyte (GB)
+Question 4:
+What is the abbreviation for a terabyte (TB)?
+a. TB
+b. GB
+c. MB
+d. KB
+Question 5:
+Convert 500 megabytes (MB) to gigabytes (GB).
+a. 0.5 GB
+b. 5 GB
+c. 50 GB
+d. 5000 GB
+Question 6:
+How many kilobytes (KB) are there in a megabyte (MB)?
+a. 1000 KB
+b. 1024 KB
+c. 500 KB
+d. 2048 KB
+Question 7:
+What is the next unit of measurement after petabyte (PB)?
+a. Gigabyte (GB)
+b. Exabyte (EB)
+c. Terabyte (TB)
+d. Zettabyte (ZB)
+Question 8:
+How many bytes are there in a gigabyte (GB)?
+a. 1000 bytes
+b. 1024 bytes
+c. 1000000 bytes
+d. 1048576 bytes
+Question 9:
+Which memory unit is typically used to measure the size of RAM?
+a. Kilobyte (KB)
+b. Megabyte (MB)
+c. Gigabyte (GB)
+d. Terabyte (TB)
+Question 10:
+Convert 2 terabytes (TB) to megabytes (MB).
+a. 2000 MB
+b. 20000 MB
+c. 200000 MB
+d. 2000000 MB
+Bài 5: Bài tập xác định dung lượng tối đa của bộ nhớ
+	Kích thước 1 ngăn nhớ (ô nhớ)? 1 byte
+	Số bit dùng để đánh địa chỉ là bao nhiêu? 16 bit, 36 bit,…
+	Dung lượng 
++ 16 bit: Dung lượng = 2^16 = 64 KB
++ 36 bit: Dung lượng = 2^36 = 64 GB
+1. Một ô nhớ (byte) thường có kích thước là bao nhiêu bit?
+a. 4 bits
+b. 8 bits
+c. 16 bits
+d. 32 bits
+2. Nếu hệ thống sử dụng 16-bit địa chỉ, số lượng ô nhớ tối đa có thể địa chỉ là bao nhiêu?
+a. 16 bytes
+b. 64 bytes
+c. 256 bytes
+d. 65536 bytes
+3. Trong hệ thống sử dụng 32-bit địa chỉ, dung lượng tối đa của bộ nhớ có thể địa chỉ là bao nhiêu bytes?
+a. 2 GB
+b. 4 GB
+c. 8 GB
+d. 16 GB
+4. Một hệ thống sử dụng địa chỉ 64-bit. Dung lượng tối đa của bộ nhớ có thể địa chỉ là bao nhiêu bytes?
+a. 4 GB
+b. 16 GB
+c. 64 GB
+d. 256 GB
+5. Một hệ thống sử dụng địa chỉ 36-bit. Dung lượng tối đa của bộ nhớ có thể địa chỉ là bao nhiêu bytes?
+a. 4 GB
+b. 64 GB
+c. 256 GB
+d. 512 GB
+6. Trong hệ thống sử dụng 8-bit địa chỉ, số lượng ô nhớ tối đa có thể địa chỉ là bao nhiêu?
+a. 8 bytes
+b. 64 bytes
+c. 256 bytes
+d. 1024 bytes
+7. Nếu hệ thống sử dụng 20-bit địa chỉ, số lượng ô nhớ tối đa có thể địa chỉ là bao nhiêu?
+a. 20 bytes
+b. 64 bytes
+c. 1024 bytes
+d. 1048576 bytes
+8. Trong hệ thống sử dụng 48-bit địa chỉ, dung lượng tối đa của bộ nhớ có thể địa chỉ là bao nhiêu bytes?
+a. 256 GB
+b. 1 TB
+c. 4 TB
+d. 16 TB
+9. Một hệ thống sử dụng địa chỉ 30-bit. Dung lượng tối đa của bộ nhớ có thể địa chỉ là bao nhiêu bytes?
+a. 1 GB
+b. 2 GB
+c. 4 GB
+d. 8 GB
+10. Trong hệ thống sử dụng 12-bit địa chỉ, số lượng ô nhớ tối đa có thể địa chỉ là bao nhiêu?
+a. 12 bytes
+b. 64 bytes
+c. 256 bytes
+d. 4096 bytes
+
+Viết hàm hoán vị 2 phần tử
+void swag(int* a, int* b) {
+	int temp;
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+Hàm trả về 2 giá trị
+	Có 3 phương pháp:
++ Sử dụng con trỏ
++ Sử dụng mảng
++ Sử dụng struct
+Sử dụng con trỏ:
+#include <stdio.h>
+void swag(int* a, int* b) {
+	int temp;
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+int main() {
+	int a, b;
+	scanf_s("%d%d", &a, &b);
+	printf("a = %d, b = %d\n", a, b);
+	swag(&a, &b);
+	printf("a = %d, b = %d", a, b);
+	return 0;
+}
+
+Viết chương trình nhập và in mảng bằng 2 cách (sử dụng mảng như 1 con trỏ)
+	Cách 1: Thông thường
+#include <stdio.h>
+int main() {
+	int a[100];
+	int i, n;
+	printf("Nhap n: ");
+	scanf("%d", &n);
+	for (i = 0;i < n;i++) {
+		printf("a[%d] = ", i);
+		scanf("%d", &a[i]);
+	}
+	for (i = 0;i < n;i++) {
+		printf("%d ", a[i]);
+	}
+	return 0;
+}
+	Cách 2: Dùng con trỏ
+#include <stdio.h>
+int main() {
+	int a[100];
+	int i, n;
+	printf("Nhap n: ");
+	scanf("%d", &n);
+	for (i = 0;i < n;i++) {
+		printf("a[%d] = ", i);
+		scanf("%d", a + i);
+	}
+	for (i = 0;i < n;i++) {
+		printf("%d ", *(a + i));
+	}
+	return 0;
+}
